@@ -27,7 +27,7 @@ const Products = () => {
     },
     {
       id: 3,
-      name: "Proximamente mas productos",
+      name: "Próximamente mas productos",
       description: "Pronto estaremos presentandos nuestros nuevos productos",
       price: "------",
       image: proximamente,
@@ -35,7 +35,7 @@ const Products = () => {
     },
     {
       id: 4,
-      name: "Proximamente mas productos",
+      name: "Próximamente mas productos",
       description: "Pronto estaremos presentandos nuestros nuevos productos",
       price: "------",
       image: proximamente,
@@ -52,7 +52,7 @@ const Products = () => {
     {
       icon: Truck,
       title: "Envío Gratis",
-      description: "A partir de $50.000 en Bogotá",
+      description: "Tenermos envio gratis en Barranquilla, Pregunta la disponibilidad si eres de otra ciudad",
     },
     {
       icon: Shield,

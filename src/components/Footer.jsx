@@ -112,7 +112,7 @@ const Footer = () => {
                   className="flex items-center space-x-3 text-amber-200 hover:text-white transition duration-300"
                 >
                   <Mail className="h-5 w-5" />
-                  <span>info@cacaodeserrato.com</span>
+                  <span>jorgeserrato1963@gmail.com</span>
                 </a>
               </li>
               <li>

@@ -41,13 +41,13 @@ const Contact = () => {
     {
       icon: Mail,
       title: 'Email',
-      info: 'info@cacaodeserrato.com',
-      action: 'mailto:info@cacaodeserrato.com'
+      info: 'jorgeserrato1963@gmail.com',
+      action: 'mailto:jorgeserrato1963@gmail.com'
     },
     {
       icon: MapPin,
       title: 'Ubicación',
-      info: 'Colombia',
+      info: 'Barranquilla, Colombia',
       action: '#'
     }
   ];
