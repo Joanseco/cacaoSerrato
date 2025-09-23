@@ -1,6 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
+import img1 from '../assets/img1.webp';
+import img2 from '../assets/img2.webp';
+// ...existing code...
 
 const Hero = () => {
   const scrollToProducts = () => {
@@ -66,7 +69,7 @@ const Hero = () => {
                 className="w-80 h-80 rounded-full overflow-hidden shadow-2xl"
               >
                 <img 
-                  src="../assets/img1.jpg" 
+                  src={img1} 
                   alt="Cacao de Serrato Logo" 
                   className="w-full h-full object-cover"
                 />
@@ -77,7 +80,7 @@ const Hero = () => {
                 className="w-64 h-64 rounded-full overflow-hidden shadow-xl"
               >
                 <img 
-                  src="../assets/img2.jpg" 
+                  src={img2} 
                   alt="Serrato Café de Colombia" 
                   className="w-full h-full object-cover"
                 />
