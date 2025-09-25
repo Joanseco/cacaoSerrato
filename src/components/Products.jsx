@@ -2,25 +2,25 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Star, Package, Truck, Shield } from "lucide-react";
 import woman_cofe from "../assets/woman_cofe.webp";
-import man_cofe from "../assets/man_cofe.webp";
+import man_cofe from "../assets/man_cofe3.webp";
 import proximamente from "../assets/proximamente.jpg";
 
 const Products = () => {
   const products = [
     {
       id: 1,
-      name: "250 grs Cafe Honey",
+      name: "Café Honey 250 grs",
       description:
-        "Café de especialidad con proceso Honey. Un café suave, dulce y sin amargura, con notas a caramelo y frutas.",
+        "Café de especialidad con proceso Honey. Un café suave, dulce y sin amargura, Nuestro cacao es 100% puro y natural con notas a caramelo y frutas.",
       price: "$35.000",
       image: woman_cofe,
       features: ["100% Arábica", "Tostado Artesanal", "Origen Único"],
     },
     {
       id: 2,
-      name: "200 grs Cacao de origen",
+      name: "Café Tostado y Molido 200 grs ",
       description:
-        "Un viaje al corazón del sabor. Nuestro cacao de origen es 100% puro y natural, seleccionado por su sabor intenso y profundo.",
+        "Aroma intenso, sabor distintivo y la frescura perfecta para preparar la taza ideal en tu ritual diario.",
       price: "$30.000",
       image: man_cofe,
       features: ["100% Orgánico", "Sin Aditivos", "Origen Controlado"],
@@ -28,7 +28,7 @@ const Products = () => {
     {
       id: 3,
       name: "Próximamente mas productos",
-      description: "Pronto estaremos presentandos nuestros nuevos productos",
+      description: "Estamos trabajando en nuevas y deliciosas sorpresas para expandir nuestra colección.",
       price: "------",
       image: proximamente,
       features: [],
@@ -36,7 +36,7 @@ const Products = () => {
     {
       id: 4,
       name: "Próximamente mas productos",
-      description: "Pronto estaremos presentandos nuestros nuevos productos",
+      description: "Estamos trabajando en nuevas y deliciosas sorpresas para expandir nuestra colección.",
       price: "------",
       image: proximamente,
       features: [],
@@ -52,7 +52,7 @@ const Products = () => {
     {
       icon: Truck,
       title: "Envío Gratis",
-      description: "Tenermos envio gratis en Barranquilla, Pregunta la disponibilidad si eres de otra ciudad",
+      description: "Tenermos envio gratis en Barranquilla, Pregunta por la disponibilidad si eres de otra ciudad!",
     },
     {
       icon: Shield,
@@ -99,7 +99,7 @@ const Products = () => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
               whileHover={{ y: -10 }}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100"
+              className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 flex flex-col h-full"
             >
               <div className="relative h-48 overflow-hidden">
                 <img
@@ -112,26 +112,29 @@ const Products = () => {
                 </div>
               </div>
 
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-amber-900 mb-2">
-                  {product.name}
-                </h3>
-                <p className="text-gray-600 text-sm mb-4 leading-relaxed">
-                  {product.description}
-                </p>
+              <div className="p-6 flex flex-col flex-1 justify-between">
+                <div>
+                  <h3 className="text-xl font-bold text-amber-900 mb-2">
+                    {product.name}
+                  </h3>
+                  <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+                    {product.description}
+                  </p>
 
-                <div className="space-y-2 mb-4">
-                  {product.features.map((feature, idx) => (
-                    <span
-                      key={idx}
-                      className="inline-block bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded-full mr-2"
-                    >
-                      {feature}
-                    </span>
-                  ))}
+                  <div className="space-y-2 mb-4">
+                    {product.features.map((feature, idx) => (
+                      <span
+                        key={idx}
+                        className="inline-block bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded-full mr-2"
+                      >
+                        {feature}
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
-                <div className="flex items-center justify-between">
+                {/* Nuevo contenedor para precio y botón */}
+                <div className="flex items-center justify-between mt-6">
                   <span className="text-2xl font-bold text-amber-600">
                     {product.price}
                   </span>

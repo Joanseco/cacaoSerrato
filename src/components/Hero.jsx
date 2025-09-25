@@ -32,8 +32,7 @@ const Hero = () => {
               Cacao para un amigo como tú
             </p>
             <p className="text-lg text-gray-700 leading-relaxed">
-              Descubre el auténtico sabor de Colombia con nuestro café premium y cacao de la más alta calidad. 
-              Cada grano cuenta una historia de tradición, pasión y excelencia.
+              Descubre el auténtico sabor de Colombia con nuestro café premium y cacao de la más alta calidad. Cada grano cuenta una historia de tradición, pasión y excelencia. Te garantizamos que recibirás el peso exacto en cada paquete, porque la confianza es tan importante como el sabor.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <motion.button 

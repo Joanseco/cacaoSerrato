@@ -12,31 +12,27 @@ const Reviews = () => {
       location: 'Bogotá',
       rating: 5,
       comment: 'El mejor café que he probado en mi vida. La calidad es excepcional y el sabor es simplemente increíble. ¡Totalmente recomendado!',
-      avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786'
     },
     {
       id: 2,
       name: 'Carlos Rodríguez',
-      location: 'Medellín',
+      location: 'Santa Marta',
       rating: 5,
-      comment: 'Como chef, puedo decir que el cacao de Serrato es de una calidad superior. Perfecto para mis postres gourmet.',
-      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e'
+      comment: 'Puedo decir que el cacao de Serrato es de una calidad superior. Perfecto para mis postres gourmet.',
     },
     {
       id: 3,
       name: 'Ana Martínez',
-      location: 'Cali',
+      location: 'Barranquilla',
       rating: 5,
       comment: 'Llevo comprando aquí desde hace años. La consistencia en la calidad y el excelente servicio al cliente me mantienen como clienta fiel.',
-      avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80'
     },
     {
       id: 4,
-      name: 'Diego Pérez',
+      name: 'Jesus Pérez',
       location: 'Barranquilla',
       rating: 5,
-      comment: 'El pack degustación fue perfecto para conocer todos los productos. Ahora soy un cliente regular. ¡Excelente calidad!',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d'
+      comment: 'El café honey fue perfecto. Ahora soy un cliente regular. ¡Excelente calidad!',
     },
     {
       id: 5,
@@ -44,14 +40,13 @@ const Reviews = () => {
       location: 'Cartagena',
       rating: 5,
       comment: 'El aroma y sabor del café de Serrato es incomparable. Es mi ritual matutino favorito. No cambiaría por ningún otro.',
-      avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9'
     }
   ];
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentReview((prev) => (prev + 1) % reviews.length);
-    }, 5000);
+    }, 7000);
 
     return () => clearInterval(timer);
   }, [reviews.length]);
@@ -137,11 +132,6 @@ const Reviews = () => {
                   
                   {/* Reviewer Info */}
                   <div className="flex items-center space-x-4">
-                    <img
-                      src={reviews[currentReview].avatar}
-                      alt={reviews[currentReview].name}
-                      className="w-16 h-16 rounded-full object-cover border-4 border-amber-200"
-                    />
                     <div>
                       <h4 className="text-xl font-semibold text-amber-900">
                         {reviews[currentReview].name}

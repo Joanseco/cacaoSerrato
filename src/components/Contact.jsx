@@ -1,62 +1,68 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, Clock, Send, MessageCircle } from 'lucide-react';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { Phone, Mail, MapPin, Clock, Send, MessageCircle } from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: ''
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
   });
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Aquí puedes agregar la lógica para enviar el formulario
-    const whatsappMessage = `Hola! Soy ${formData.name}. ${formData.message}. Mi email es: ${formData.email}${formData.phone ? ` y mi teléfono: ${formData.phone}` : ''}`;
-    const whatsappURL = `https://wa.me/573127622880?text=${encodeURIComponent(whatsappMessage)}`;
-    window.open(whatsappURL, '_blank');
+    const whatsappMessage = `Hola! Soy ${formData.name}. ${
+      formData.message
+    }. Mi email es: ${formData.email}${
+      formData.phone ? ` y mi teléfono: ${formData.phone}` : ""
+    }`;
+    const whatsappURL = `https://wa.me/573127622880?text=${encodeURIComponent(
+      whatsappMessage
+    )}`;
+    window.open(whatsappURL, "_blank");
   };
 
   const contactInfo = [
     {
       icon: Phone,
-      title: 'Teléfono',
-      info: '312 762 2880',
-      action: 'tel:+573127622880'
+      title: "Teléfono",
+      info: "312 762 2880",
+      action: "tel:+573127622880",
     },
     {
       icon: MessageCircle,
-      title: 'WhatsApp',
-      info: '312 762 2880',
-      action: 'https://wa.me/573127622880'
+      title: "WhatsApp",
+      info: "312 762 2880",
+      action: "https://wa.me/573127622880",
     },
     {
       icon: Mail,
-      title: 'Email',
-      info: 'jorgeserrato1963@gmail.com',
-      action: 'mailto:jorgeserrato1963@gmail.com'
+      title: "Email",
+      info: "jorgeserrato1963@gmail.com",
+      action: "mailto:jorgeserrato1963@gmail.com",
     },
     {
       icon: MapPin,
-      title: 'Ubicación',
-      info: 'Barranquilla, Colombia',
-      action: '#'
-    }
+      title: "Ubicación",
+      info: "Barranquilla, Colombia",
+      action: "#",
+    },
   ];
 
   return (
     <section id="contacto" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -67,14 +73,14 @@ const Contact = () => {
             Contáctanos
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            ¿Tienes alguna pregunta sobre nuestros productos? ¡Estamos aquí para ayudarte! 
-            Contáctanos y descubre el mundo del café premium.
+            ¿Tienes alguna pregunta sobre nuestros productos? ¡Estamos aquí para
+            ayudarte! Contáctanos y descubre el mundo del café premium.
           </p>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Form */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -84,10 +90,13 @@ const Contact = () => {
             <h3 className="text-2xl font-bold text-amber-900 mb-6">
               Envíanos un Mensaje
             </h3>
-            
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-amber-800 mb-2">
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium text-amber-800 mb-2"
+                >
                   Nombre Completo *
                 </label>
                 <input
@@ -103,7 +112,10 @@ const Contact = () => {
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-amber-800 mb-2">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-amber-800 mb-2"
+                >
                   Email *
                 </label>
                 <input
@@ -119,7 +131,10 @@ const Contact = () => {
               </div>
 
               <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-amber-800 mb-2">
+                <label
+                  htmlFor="phone"
+                  className="block text-sm font-medium text-amber-800 mb-2"
+                >
                   Teléfono
                 </label>
                 <input
@@ -134,7 +149,10 @@ const Contact = () => {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-amber-800 mb-2">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-amber-800 mb-2"
+                >
                   Mensaje *
                 </label>
                 <textarea
@@ -162,7 +180,7 @@ const Contact = () => {
           </motion.div>
 
           {/* Contact Information */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -178,8 +196,10 @@ const Contact = () => {
                 <motion.a
                   key={index}
                   href={item.action}
-                  target={item.action.startsWith('http') ? '_blank' : '_self'}
-                  rel={item.action.startsWith('http') ? 'noopener noreferrer' : ''}
+                  target={item.action.startsWith("http") ? "_blank" : "_self"}
+                  rel={
+                    item.action.startsWith("http") ? "noopener noreferrer" : ""
+                  }
                   whileHover={{ scale: 1.02, x: 10 }}
                   className="flex items-center space-x-4 p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 border border-gray-100"
                 >
@@ -190,9 +210,7 @@ const Contact = () => {
                     <h4 className="text-lg font-semibold text-amber-900">
                       {item.title}
                     </h4>
-                    <p className="text-gray-600">
-                      {item.info}
-                    </p>
+                    <p className="text-gray-600">{item.info}</p>
                   </div>
                 </motion.a>
               ))}
@@ -206,19 +224,8 @@ const Contact = () => {
                   Horarios de Atención
                 </h4>
               </div>
-              <div className="space-y-2 text-gray-700">
-                <div className="flex justify-between">
-                  <span>Lunes - Viernes:</span>
-                  <span className="font-medium">8:00 AM - 6:00 PM</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Sábados:</span>
-                  <span className="font-medium">9:00 AM - 4:00 PM</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Domingos:</span>
-                  <span className="font-medium">Cerrado</span>
-                </div>
+              <div className="text-gray-700">
+                <p>Servicio continuo, 24 horas y 365 días del año.</p>
               </div>
             </div>
 
