@@ -1,8 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Star, Package, Truck, Shield } from "lucide-react";
+import man_cofe from "../assets/man_cofe.webp";
 import woman_cofe from "../assets/woman_cofe.webp";
-import man_cofe from "../assets/man_cofe3.webp";
+import woman_cofe2 from "../assets/woman_cofe2.webp";
 import proximamente from "../assets/proximamente.jpg";
 
 const Products = () => {
@@ -18,25 +19,27 @@ const Products = () => {
     },
     {
       id: 2,
-      name: "Café Tostado y Molido 200 grs ",
+      name: "Café Tostado y Molido 50 grs ",
       description:
         "Aroma intenso, sabor distintivo y la frescura perfecta para preparar la taza ideal en tu ritual diario.",
-      price: "$30.000",
+      price: "$20.000",
       image: man_cofe,
       features: ["100% Orgánico", "Sin Aditivos", "Origen Controlado"],
     },
     {
       id: 3,
-      name: "Próximamente mas productos",
-      description: "Estamos trabajando en nuevas y deliciosas sorpresas para expandir nuestra colección.",
-      price: "------",
-      image: proximamente,
-      features: [],
+      name: "Cacao en Polvo 200 grs",
+      description:
+        "Cacao 100% puro y natural, ideal para bebidas y repostería. Su sabor intenso y versatilidad te encantarán. ¡También es perfecto para usar en mascarillas faciales!",
+      price: "$30.000",
+      image: woman_cofe2,
+      features: ["100% Natural", "Uso Cosmético", "Sin Azúcares Añadidos"],
     },
     {
       id: 4,
       name: "Próximamente mas productos",
-      description: "Estamos trabajando en nuevas y deliciosas sorpresas para expandir nuestra colección.",
+      description:
+        "Estamos trabajando en nuevas y deliciosas sorpresas para expandir nuestra colección.",
       price: "------",
       image: proximamente,
       features: [],
@@ -52,7 +55,8 @@ const Products = () => {
     {
       icon: Truck,
       title: "Envío Gratis",
-      description: "Tenermos envio gratis en Barranquilla, Pregunta por la disponibilidad si eres de otra ciudad!",
+      description:
+        "Tenermos envio gratis en Barranquilla, Pregunta por la disponibilidad si eres de otra ciudad!",
     },
     {
       icon: Shield,
@@ -142,16 +146,18 @@ const Products = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => handleOrderProduct(product)}
-                    disabled={product.id === 3 || product.id === 4}
+                    disabled={/*product.id === 3 || */ product.id === 4}
                     className={`bg-amber-600 text-white px-4 py-2 rounded-lg transition duration-300 font-semibold
                     ${
-                      product.id === 3 || product.id === 4
+                      /*product.id === 3 ||*/ product.id === 4
                         ? "bg-gray-400 cursor-not-allowed hover:bg-gray-400"
                         : "hover:bg-amber-700"
                     }
                   `}
                   >
-                    {product.id === 3 || product.id === 4 ? "Próximamente" : "Pedir"}
+                    {/*product.id === 3 ||*/ product.id === 4
+                      ? "Próximamente"
+                      : "Pedir"}
                   </motion.button>
                 </div>
               </div>
