@@ -28,11 +28,15 @@ const Hero = () => {
               Cacao de
               <span className="block text-orange-600">Serrato</span>
             </h1>
+            <p className="text-sm text-amber-800 font-medium mt-0" style={{ marginTop: 0 }}>
+              Un producto distribuido por Deek Company S A S
+            </p>
+            
             <p className="text-xl lg:text-2xl text-amber-800 font-medium">
               Cacao para un amigo como tú
             </p>
             <p className="text-lg text-gray-700 leading-relaxed">
-              Descubre el auténtico sabor de Colombia con nuestro café premium y cacao de la más alta calidad. Cada grano cuenta una historia de tradición, pasión y excelencia. Te garantizamos que recibirás el peso exacto en cada paquete, porque la confianza es tan importante como el sabor.
+              Descubre el auténtico sabor de Colombia con nuestro café premium y cacao de la más alta calidad. Cada grano cuenta una historia de tradición, pasión y excelencia. Te garantizamos que recibirás el peso exacto en cada paquete (peso es garantizado por nuestras basculas digitales), porque la confianza es tan importante como el sabor.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <motion.button 
