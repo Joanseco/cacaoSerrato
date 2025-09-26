@@ -69,7 +69,7 @@ const Reviews = () => {
   };
 
   return (
-    <section id="reviews" className="py-20 bg-gradient-to-br from-amber-50 to-orange-100">
+  <section id="reviews" className="py-20 bg-gradient-to-br from-amber-50 to-orange-100" role="region" aria-label="Carrusel de reseñas de clientes">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div 
@@ -92,6 +92,7 @@ const Reviews = () => {
         <div className="relative max-w-4xl mx-auto">
           {/* Navigation Buttons */}
           <button
+            aria-label="Ver reseña anterior"
             onClick={prevReview}
             className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 z-10 bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition duration-300 group"
           >
@@ -99,64 +100,66 @@ const Reviews = () => {
           </button>
           
           <button
+            aria-label="Ver reseña siguiente"
             onClick={nextReview}
             className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 z-10 bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition duration-300 group"
           >
             <ChevronRight className="h-6 w-6 text-amber-600 group-hover:text-amber-700" />
           </button>
 
-          {/* Review Cards */}
-          <div className="overflow-hidden">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentReview}
-                initial={{ opacity: 0, x: 100 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -100 }}
-                transition={{ duration: 0.5 }}
-                className="bg-white rounded-2xl shadow-xl p-8 lg:p-12 mx-8"
-              >
-                <div className="flex flex-col items-center text-center">
-                  {/* Quote Icon */}
-                  <Quote className="h-12 w-12 text-amber-200 mb-6" />
-                  
-                  {/* Review Text */}
-                  <p className="text-lg lg:text-xl text-gray-700 mb-8 leading-relaxed italic">
-                    "{reviews[currentReview].comment}"
-                  </p>
-                  
-                  {/* Stars */}
-                  <div className="flex space-x-1 mb-6">
-                    {renderStars(reviews[currentReview].rating)}
-                  </div>
-                  
-                  {/* Reviewer Info */}
-                  <div className="flex items-center space-x-4">
-                    <div>
-                      <h4 className="text-xl font-semibold text-amber-900">
-                        {reviews[currentReview].name}
-                      </h4>
-                      <p className="text-gray-600">
-                        {reviews[currentReview].location}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
+           {/* Review Cards */}
+           <div className="overflow-hidden" aria-live="polite">
+             <AnimatePresence mode="wait">
+               <motion.div
+                 key={currentReview}
+                 initial={{ opacity: 0, x: 100 }}
+                 animate={{ opacity: 1, x: 0 }}
+                 exit={{ opacity: 0, x: -100 }}
+                 transition={{ duration: 0.5 }}
+                 className="bg-white rounded-2xl shadow-xl p-8 lg:p-12 mx-8"
+               >
+                 <div className="flex flex-col items-center text-center">
+                   {/* Quote Icon */}
+                   <Quote className="h-12 w-12 text-amber-200 mb-6" />
+                   
+                   {/* Review Text */}
+                   <p className="text-lg lg:text-xl text-gray-700 mb-8 leading-relaxed italic">
+                     "{reviews[currentReview].comment}"
+                   </p>
+                   
+                   {/* Stars */}
+                   <div className="flex space-x-1 mb-6">
+                     {renderStars(reviews[currentReview].rating)}
+                   </div>
+                   
+                   {/* Reviewer Info */}
+                   <div className="flex items-center space-x-4">
+                     <div>
+                       <h4 className="text-xl font-semibold text-amber-900">
+                         {reviews[currentReview].name}
+                       </h4>
+                       <p className="text-gray-600">
+                         {reviews[currentReview].location}
+                       </p>
+                     </div>
+                   </div>
+                 </div>
+               </motion.div>
+             </AnimatePresence>
+           </div>
 
           {/* Dots Indicator */}
           <div className="flex justify-center space-x-2 mt-8">
-            {reviews.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentReview(index)}
-                className={`w-3 h-3 rounded-full transition duration-300 ${
-                  index === currentReview ? 'bg-amber-600' : 'bg-amber-200'
-                }`}
-              />
-            ))}
+             {reviews.map((_, index) => (
+               <button
+                 aria-label={`Ver reseña ${index + 1}`}
+                 key={index}
+                 onClick={() => setCurrentReview(index)}
+                 className={`w-3 h-3 rounded-full transition duration-300 border border-amber-700 focus:outline-amber-700 ${
+                   index === currentReview ? 'bg-amber-600' : 'bg-amber-200'
+                 }`}
+               />
+             ))}
           </div>
         </div>
 

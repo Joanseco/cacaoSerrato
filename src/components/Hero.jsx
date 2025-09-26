@@ -100,6 +100,7 @@ const Hero = () => {
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
         >
           <motion.button
+            aria-label="Desplazar hacia productos"
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
             onClick={scrollToProducts}
