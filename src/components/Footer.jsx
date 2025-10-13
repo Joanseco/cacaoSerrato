@@ -33,6 +33,9 @@ const Footer = () => {
               Desde el corazón de Colombia, llevamos a tu mesa el mejor café y cacao premium. 
               Cada grano cuenta una historia de tradición, calidad y pasión por la excelencia.
             </p>
+            <p className="text-amber-200 mb-6 leading-relaxed max-w-md">
+            Producto distribuido por Deek Company S A S
+            </p>
             <div className="flex items-center space-x-2 text-amber-300">
               <span>Hecho con</span>
               <Heart className="h-4 w-4 text-red-400 fill-current" />
