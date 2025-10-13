@@ -66,7 +66,7 @@ const Products = () => {
   ];
 
   const handleOrderProduct = (product) => {
-    const message = `¡Hola! Me interesa comprar el producto: *${product.name}* por ${product.price}. ${product.description} ¿Podrían darme más información sobre disponibilidad y envío?`;
+    const message = `¡Hola! Me interesa comprar el producto: *${product.name}*  ${product.description} ¿Podrían darme más información sobre disponibilidad y envío?`;
     const whatsappURL = `https://wa.me/573127622880?text=${encodeURIComponent(
       message
     )}`;
