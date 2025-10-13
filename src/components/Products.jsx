@@ -13,7 +13,7 @@ const Products = () => {
       name: "Café Honey 250 grs",
       description:
         "Café de especialidad con proceso Honey. Un café suave, dulce y sin amargura, Nuestro cacao es 100% puro y natural con notas a caramelo y frutas.",
-      price: "$35.000",
+      price: "",
       image: woman_cofe,
       features: ["100% Arábica", "Tostado Artesanal", "Origen Único"],
     },
@@ -22,7 +22,7 @@ const Products = () => {
       name: "Café Tostado y Molido 50 grs ",
       description:
         "Aroma intenso, sabor distintivo y la frescura perfecta para preparar la taza ideal en tu ritual diario.",
-      price: "$20.000",
+      price: "",
       image: man_cofe,
       features: ["100% Orgánico", "Sin Aditivos", "Origen Controlado"],
     },
@@ -31,7 +31,7 @@ const Products = () => {
       name: "Cacao en Polvo 200 grs",
       description:
         "Cacao 100% puro y natural, ideal para bebidas y repostería. Su sabor intenso y versatilidad te encantarán. ¡También es perfecto para usar en mascarillas faciales!",
-      price: "$30.000",
+      price: "",
       image: woman_cofe2,
       features: ["100% Natural", "Uso Cosmético", "Sin Azúcares Añadidos"],
     },
@@ -40,7 +40,7 @@ const Products = () => {
       name: "Próximamente mas productos",
       description:
         "Estamos trabajando en nuevas y deliciosas sorpresas para expandir nuestra colección.",
-      price: "------",
+      price: "",
       image: proximamente,
       features: [],
     },
@@ -138,16 +138,16 @@ const Products = () => {
                 </div>
 
                 {/* Nuevo contenedor para precio y botón */}
-                <div className="flex items-center justify-between mt-6">
-                  <span className="text-2xl font-bold text-amber-600">
+                <div className="flex items-center justify-center mt-6">
+                  {/* <span className="text-2xl font-bold text-amber-600">
                     {product.price}
-                  </span>
+                  </span> */}
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => handleOrderProduct(product)}
                     disabled={/*product.id === 3 || */ product.id === 4}
-                    className={`bg-amber-600 text-white px-4 py-2 rounded-lg transition duration-300 font-semibold
+                    className={`bg-amber-600 text-white px-20 py-2 rounded-md transition duration-300 font-semibold
                     ${
                       /*product.id === 3 ||*/ product.id === 4
                         ? "bg-gray-400 cursor-not-allowed hover:bg-gray-400"
