@@ -14,9 +14,9 @@ const Hero = () => {
   };
 
   return (
-    <section id="inicio" className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-100 pt-20">
+    <section id="inicio" className="relative min-h-screen w-full bg-gradient-to-br from-amber-50 to-orange-100 pt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-10rem)]">
+        <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
           {/* Left Content */}
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
