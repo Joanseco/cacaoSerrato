@@ -35,13 +35,13 @@ const Contact = () => {
     {
       icon: Phone,
       title: "Teléfono",
-      info: "312 762 2880",
+      info: "+57 312 762 2880",
       action: "tel:+573127622880",
     },
     {
       icon: MessageCircle,
       title: "WhatsApp",
-      info: "312 762 2880",
+      info: "+57 312 762 2880",
       action: "https://wa.me/573127622880",
     },
     {
