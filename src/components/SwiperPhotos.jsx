@@ -412,6 +412,7 @@ export default function CircularGallery({
       { id: 10, src: '/assets/swiper-photos/10.jpg', alt: 'Cacao de Serrato en Francia' },
       { id: 11, src: '/assets/swiper-photos/11.jpg', alt: 'Cacao de Serrato en Francia' },
       { id: 12, src: '/assets/swiper-photos/12.jpeg', alt: 'Cacao de Serrato en Cartagena' },
+      { id: 13, src: '/assets/swiper-photos/13.jpg', alt: 'Cacao de Serrato en Cartagena' },
     ];
 
     const app = new App(containerRef.current, { 
