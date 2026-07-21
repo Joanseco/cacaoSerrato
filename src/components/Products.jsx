@@ -1,82 +1,55 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { Star, Package, Truck, Shield } from "lucide-react";
-import man_cofe from "../assets/man_cofe.webp";
-import woman_cofe from "../assets/woman_cofe.webp";
-import woman_cofe2 from "../assets/woman_cofe2.webp";
-import proximamente from "../assets/proximamente.jpg";
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Star, Package, Truck, Shield } from 'lucide-react';
+import man_cofe from '../assets/man_cofe.webp';
+import woman_cofe from '../assets/woman_cofe.webp';
+import woman_cofe2 from '../assets/woman_cofe2.webp';
+import proximamente from '../assets/proximamente.jpg';
 
-const Products = () => {
-  const products = [
-    {
-      id: 1,
-      name: "Café Honey 250 grs",
-      description:
-        "Café de especialidad con proceso Honey. Un café suave, dulce y sin amargura, Nuestro cacao es 100% puro y natural con notas a caramelo y frutas.",
-      price: "",
-      image: woman_cofe,
-      features: ["100% Arábica", "Tostado Artesanal", "Origen Único"],
-    },
-    {
-      id: 2,
-      name: "Café Tostado y Molido 50 grs ",
-      description:
-        "Aroma intenso, sabor distintivo y la frescura perfecta para preparar la taza ideal en tu ritual diario.",
-      price: "",
-      image: man_cofe,
-      features: ["100% Orgánico", "Sin Aditivos", "Origen Controlado"],
-    },
-    {
-      id: 3,
-      name: "Cacao en Polvo 200 grs",
-      description:
-        "Cacao 100% puro y natural, ideal para bebidas y repostería. Su sabor intenso y versatilidad te encantarán. ¡También es perfecto para usar en mascarillas faciales!",
-      price: "",
-      image: woman_cofe2,
-      features: ["100% Natural", "Uso Cosmético", "Sin Azúcares Añadidos"],
-    },
-    {
-      id: 4,
-      name: "Próximamente mas productos",
-      description:
-        "Estamos trabajando en nuevas y deliciosas sorpresas para expandir nuestra colección.",
-      price: "",
-      image: proximamente,
-      features: [],
-    },
-  ];
+const Products = ({ language, t }) => {
+  const images = [woman_cofe, man_cofe, woman_cofe2, proximamente];
+
+  const products = t.products.productList.map((product, index) => ({
+    id: index + 1,
+    name: product.name,
+    description: product.description,
+    image: images[index],
+    features: product.features,
+  }));
 
   const features = [
     {
       icon: Package,
-      title: "Empaque Premium",
-      description: "Sellado al vacío para conservar frescura",
+      title: t.products.featureLabels.premium,
+      description: t.products.featureLabels.premiumDesc,
     },
     {
       icon: Truck,
-      title: "Envío Gratis",
-      description:
-        "Tenermos envio gratis en Barranquilla, Pregunta por la disponibilidad si eres de otra ciudad!",
+      title: t.products.featureLabels.shipping,
+      description: t.products.featureLabels.shippingDesc,
     },
     {
       icon: Shield,
-      title: "Calidad Garantizada",
-      description: "Satisfacción 100% asegurada",
+      title: t.products.featureLabels.quality,
+      description: t.products.featureLabels.qualityDesc,
     },
   ];
 
   const handleOrderProduct = (product) => {
-    const message = `¡Hola! Me interesa comprar el producto: *${product.name}*  ${product.description} ¿Podrían darme más información sobre disponibilidad y envío?`;
-    const whatsappURL = `https://wa.me/573127622880?text=${encodeURIComponent(
-      message
-    )}`;
-    window.open(whatsappURL, "_blank");
+    const greetings = {
+      es: '¡Hola! Me interesa comprar el producto',
+      en: 'Hello! I am interested in buying the product',
+      fr: 'Bonjour ! Je suis intéressé(e) par l’achat du produit',
+    };
+
+    const message = `${greetings[language]}: *${product.name}* ${product.description} ¿Podrían darme más información sobre disponibilidad y envío?`;
+    const whatsappURL = `https://wa.me/573127622880?text=${encodeURIComponent(message)}`;
+    window.open(whatsappURL, '_blank');
   };
 
   return (
     <section id="productos" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -85,15 +58,13 @@ const Products = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl lg:text-5xl font-bold text-amber-900 mb-4">
-            Nuestros Productos
+            {t.products.title}
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Descubre nuestra selección de café premium y cacao de la más alta
-            calidad, cultivados con amor en las montañas de Colombia.
+            {t.products.subtitle}
           </p>
         </motion.div>
 
-        {/* Products Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {products.map((product, index) => (
             <motion.div
@@ -137,27 +108,19 @@ const Products = () => {
                   </div>
                 </div>
 
-                {/* Nuevo contenedor para precio y botón */}
                 <div className="flex items-center justify-center mt-6">
-                  {/* <span className="text-2xl font-bold text-amber-600">
-                    {product.price}
-                  </span> */}
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => handleOrderProduct(product)}
-                    disabled={/*product.id === 3 || */ product.id === 4}
-                    className={`bg-amber-600 text-white px-20 py-2 rounded-md transition duration-300 font-semibold
-                    ${
-                      /*product.id === 3 ||*/ product.id === 4
-                        ? "bg-gray-400 cursor-not-allowed hover:bg-gray-400"
-                        : "hover:bg-amber-700"
-                    }
-                  `}
+                    disabled={product.id === 4}
+                    className={`bg-amber-600 text-white px-20 py-2 rounded-md transition duration-300 font-semibold ${
+                      product.id === 4
+                        ? 'bg-gray-400 cursor-not-allowed hover:bg-gray-400'
+                        : 'hover:bg-amber-700'
+                    }`}
                   >
-                    {/*product.id === 3 ||*/ product.id === 4
-                      ? "Próximamente"
-                      : "Pedir"}
+                    {product.id === 4 ? t.products.soon : t.products.order}
                   </motion.button>
                 </div>
               </div>
@@ -165,7 +128,6 @@ const Products = () => {
           ))}
         </div>
 
-        {/* Features */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}

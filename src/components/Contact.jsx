@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, Clock, Send, MessageCircle } from "lucide-react";
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Phone, Mail, MapPin, Clock, Send, MessageCircle } from 'lucide-react';
 
-const Contact = () => {
+const Contact = ({ language, t }) => {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: "",
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
   });
 
   const handleChange = (e) => {
@@ -19,49 +19,28 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí puedes agregar la lógica para enviar el formulario
-    const whatsappMessage = `Hola! Soy ${formData.name}. ${
-      formData.message
-    }. Mi email es: ${formData.email}${
-      formData.phone ? ` y mi teléfono: ${formData.phone}` : ""
-    }`;
-    const whatsappURL = `https://wa.me/573127622880?text=${encodeURIComponent(
-      whatsappMessage
-    )}`;
-    window.open(whatsappURL, "_blank");
+
+    const greetings = {
+      es: 'Hola! Soy',
+      en: 'Hi! I am',
+      fr: 'Bonjour ! Je suis',
+    };
+
+    const whatsappMessage = `${greetings[language]} ${formData.name}. ${formData.message}. My email is: ${formData.email}${formData.phone ? ` and my phone: ${formData.phone}` : ''}`;
+    const whatsappURL = `https://wa.me/573127622880?text=${encodeURIComponent(whatsappMessage)}`;
+    window.open(whatsappURL, '_blank');
   };
 
   const contactInfo = [
-    {
-      icon: Phone,
-      title: "Teléfono",
-      info: "+57 312 762 2880",
-      action: "tel:+573127622880",
-    },
-    {
-      icon: MessageCircle,
-      title: "WhatsApp",
-      info: "+57 312 762 2880",
-      action: "https://wa.me/573127622880",
-    },
-    {
-      icon: Mail,
-      title: "Email",
-      info: "jorgeserrato1963@gmail.com",
-      action: "mailto:jorgeserrato1963@gmail.com",
-    },
-    {
-      icon: MapPin,
-      title: "Ubicación",
-      info: "Barranquilla, Colombia",
-      action: "#",
-    },
+    { icon: Phone, title: t.contact.infoLabels.phone, info: '+57 312 762 2880', action: 'tel:+573127622880' },
+    { icon: MessageCircle, title: t.contact.infoLabels.whatsapp, info: '+57 312 762 2880', action: 'https://wa.me/573127622880' },
+    { icon: Mail, title: t.contact.infoLabels.email, info: 'jorgeserrato1963@gmail.com', action: 'mailto:jorgeserrato1963@gmail.com' },
+    { icon: MapPin, title: t.contact.infoLabels.location, info: 'Barranquilla, Colombia', action: '#' },
   ];
 
   return (
     <section id="contacto" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -70,16 +49,14 @@ const Contact = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl lg:text-5xl font-bold text-amber-900 mb-4">
-            Contáctanos
+            {t.contact.title}
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            ¿Tienes alguna pregunta sobre nuestros productos? ¡Estamos aquí para
-            ayudarte! Contáctanos y descubre el mundo del café premium.
+            {t.contact.subtitle}
           </p>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -88,16 +65,13 @@ const Contact = () => {
             className="bg-gradient-to-br from-amber-50 to-orange-100 rounded-2xl p-8 shadow-lg"
           >
             <h3 className="text-2xl font-bold text-amber-900 mb-6">
-              Envíanos un Mensaje
+              {t.contact.formTitle}
             </h3>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-amber-800 mb-2"
-                >
-                  Nombre Completo *
+                <label htmlFor="name" className="block text-sm font-medium text-amber-800 mb-2">
+                  {t.contact.labels.name}
                 </label>
                 <input
                   type="text"
@@ -107,16 +81,13 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-lg border border-amber-200 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition duration-300"
-                  placeholder="Tu nombre completo"
+                  placeholder={t.contact.placeholders.name}
                 />
               </div>
 
               <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-amber-800 mb-2"
-                >
-                  Email *
+                <label htmlFor="email" className="block text-sm font-medium text-amber-800 mb-2">
+                  {t.contact.labels.email}
                 </label>
                 <input
                   type="email"
@@ -126,16 +97,13 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-lg border border-amber-200 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition duration-300"
-                  placeholder="tu@email.com"
+                  placeholder={t.contact.placeholders.email}
                 />
               </div>
 
               <div>
-                <label
-                  htmlFor="phone"
-                  className="block text-sm font-medium text-amber-800 mb-2"
-                >
-                  Teléfono
+                <label htmlFor="phone" className="block text-sm font-medium text-amber-800 mb-2">
+                  {t.contact.labels.phone}
                 </label>
                 <input
                   type="tel"
@@ -144,16 +112,13 @@ const Contact = () => {
                   value={formData.phone}
                   onChange={handleChange}
                   className="w-full px-4 py-3 rounded-lg border border-amber-200 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition duration-300"
-                  placeholder="Tu número de teléfono"
+                  placeholder={t.contact.placeholders.phone}
                 />
               </div>
 
               <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-amber-800 mb-2"
-                >
-                  Mensaje *
+                <label htmlFor="message" className="block text-sm font-medium text-amber-800 mb-2">
+                  {t.contact.labels.message}
                 </label>
                 <textarea
                   id="message"
@@ -163,7 +128,7 @@ const Contact = () => {
                   required
                   rows={4}
                   className="w-full px-4 py-3 rounded-lg border border-amber-200 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition duration-300 resize-none"
-                  placeholder="Cuéntanos cómo podemos ayudarte..."
+                  placeholder={t.contact.placeholders.message}
                 />
               </div>
 
@@ -174,12 +139,11 @@ const Contact = () => {
                 className="w-full bg-amber-600 text-white px-6 py-4 rounded-lg font-semibold hover:bg-amber-700 transition duration-300 flex items-center justify-center space-x-2 shadow-lg"
               >
                 <Send className="h-5 w-5" />
-                <span>Enviar por WhatsApp</span>
+                <span>{t.contact.sendButton}</span>
               </motion.button>
             </form>
           </motion.div>
 
-          {/* Contact Information */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -188,7 +152,7 @@ const Contact = () => {
             className="space-y-8"
           >
             <h3 className="text-2xl font-bold text-amber-900 mb-6">
-              Información de Contacto
+              {t.contact.contactInfoTitle}
             </h3>
 
             <div className="space-y-6">
@@ -196,10 +160,8 @@ const Contact = () => {
                 <motion.a
                   key={index}
                   href={item.action}
-                  target={item.action.startsWith("http") ? "_blank" : "_self"}
-                  rel={
-                    item.action.startsWith("http") ? "noopener noreferrer" : ""
-                  }
+                  target={item.action.startsWith('http') ? '_blank' : '_self'}
+                  rel={item.action.startsWith('http') ? 'noopener noreferrer' : ''}
                   whileHover={{ scale: 1.02, x: 10 }}
                   className="flex items-center space-x-4 p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 border border-gray-100"
                 >
@@ -207,36 +169,26 @@ const Contact = () => {
                     <item.icon className="h-6 w-6 text-amber-600" />
                   </div>
                   <div>
-                    <h4 className="text-lg font-semibold text-amber-900">
-                      {item.title}
-                    </h4>
+                    <h4 className="text-lg font-semibold text-amber-900">{item.title}</h4>
                     <p className="text-gray-600">{item.info}</p>
                   </div>
                 </motion.a>
               ))}
             </div>
 
-            {/* Hours */}
             <div className="bg-amber-50 rounded-xl p-6 border border-amber-200">
               <div className="flex items-center space-x-3 mb-4">
                 <Clock className="h-6 w-6 text-amber-600" />
-                <h4 className="text-lg font-semibold text-amber-900">
-                  Horarios de Atención
-                </h4>
+                <h4 className="text-lg font-semibold text-amber-900">{t.contact.hoursTitle}</h4>
               </div>
               <div className="text-gray-700">
-                <p>Servicio continuo, 24 horas y 365 días del año.</p>
+                <p>{t.contact.hoursText}</p>
               </div>
             </div>
 
-            {/* Call to Action */}
             <div className="bg-gradient-to-r from-amber-600 to-orange-600 rounded-xl p-6 text-white">
-              <h4 className="text-xl font-bold mb-2">
-                ¿Necesitas Atención Inmediata?
-              </h4>
-              <p className="mb-4 opacity-90">
-                Llámanos directamente y te atenderemos de inmediato
-              </p>
+              <h4 className="text-xl font-bold mb-2">{t.contact.ctaTitle}</h4>
+              <p className="mb-4 opacity-90">{t.contact.ctaText}</p>
               <motion.a
                 href="tel:+573127622880"
                 whileHover={{ scale: 1.05 }}
@@ -244,7 +196,7 @@ const Contact = () => {
                 className="inline-flex items-center space-x-2 bg-white text-amber-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300"
               >
                 <Phone className="h-5 w-5" />
-                <span>Llamar Ahora</span>
+                <span>{t.contact.ctaButton}</span>
               </motion.a>
             </div>
           </motion.div>
